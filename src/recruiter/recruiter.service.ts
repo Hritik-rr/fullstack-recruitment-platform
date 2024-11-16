@@ -8,7 +8,7 @@ export class RecruiterService {
   constructor(private prisma: PrismaService) {}
 
   create(createRecruiterDto: CreateRecruiterDto) {
-    return 'This action adds a new recruiter';
+    return this.prisma.recruiter.create({ data: createRecruiterDto });
   }
 
   findAll() {
