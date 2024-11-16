@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRecruiterDto } from './dto/create-recruiter.dto';
 import { UpdateRecruiterDto } from './dto/update-recruiter.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class RecruiterService {
+  constructor(private prisma: PrismaService) {}
+
   create(createRecruiterDto: CreateRecruiterDto) {
     return 'This action adds a new recruiter';
   }
 
   findAll() {
-    return `This action returns all recruiter`;
+    return this.prisma.recruiter.findMany();
   }
 
   findOne(id: number) {
