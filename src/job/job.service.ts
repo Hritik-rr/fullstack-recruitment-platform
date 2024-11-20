@@ -21,7 +21,7 @@ export class JobService {
   }
 
   findAll() {
-    return `This action returns all job`;
+    return this.prisma.job.findMany();
   }
 
   findOne(id: number) {
