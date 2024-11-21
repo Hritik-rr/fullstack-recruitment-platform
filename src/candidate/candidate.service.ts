@@ -12,7 +12,13 @@ export class CandidateService {
   }
 
   findAll() {
-    return `This action returns all candidate`;
+    return this.prisma.candidate.findMany({
+      where: {
+        user: {
+          role: 'CANDIDATE', // Filter candidates whose associated user has the role 'CANDIDATE'
+        },
+      },
+    });
   }
 
   findOne(id: number) {
